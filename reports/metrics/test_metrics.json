@@ -1,0 +1,20 @@
+{
+  "test": {
+    "loss": 1.8106457985772026,
+    "acc_food_type": 0.7791666666666667,
+    "acc_cooking": 0.655,
+    "acc_dish": 0.7920560747663551,
+    "mae_calories_kcal": 95.67748260498047,
+    "mae_protein_g": 6.275298595428467,
+    "mae_fat_g": 5.229147911071777,
+    "mae_carbohydrate_g": 13.258355140686035
+  },
+  "baseline_mae": {
+    "calories_kcal": 190.05700912730177,
+    "protein_g": 14.076309820558597,
+    "fat_g": 10.564559544213731,
+    "carbohydrate_g": 23.47192268495278
+  },
+  "n_train": 28798,
+  "n_test": 3600
+}

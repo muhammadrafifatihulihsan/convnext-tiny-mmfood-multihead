@@ -1,0 +1,14 @@
+# Colab sudah menyertakan torch/torchvision; baris ini untuk referensi bila dijalankan di tempat lain.
+torch>=2.1
+torchvision>=0.16
+transformers>=4.40
+accelerate
+huggingface_hub>=0.23
+safetensors
+pandas
+numpy
+scikit-learn
+pillow
+requests
+tqdm
+matplotlib

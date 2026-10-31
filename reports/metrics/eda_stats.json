@@ -1,0 +1,70 @@
+{
+  "rows_raw": 100000,
+  "rows_clean": 99949,
+  "unique_dish_raw": 19288,
+  "unique_cooking_raw": 2264,
+  "food_type_counts": {
+    "Homemade food": 46551,
+    "Restaurant food": 35461,
+    "Raw vegetables and fruits": 9357,
+    "Packaged food": 8312,
+    "Others": 268
+  },
+  "cooking_counts": {
+    "stir-fry": 19012,
+    "boil": 17486,
+    "raw": 16362,
+    "fry": 11703,
+    "bake": 10099,
+    "grill": 6378,
+    "other": 5815,
+    "steam": 5653,
+    "simmer-stew": 5185,
+    "unknown": 1342,
+    "pan-fry": 882,
+    "deep-fry": 32
+  },
+  "dish_labeled_rows": 22514,
+  "nutrition_describe": {
+    "calories_kcal": {
+      "count": 99949.0,
+      "mean": 411.56,
+      "std": 256.35,
+      "min": 2.0,
+      "25%": 250.0,
+      "50%": 350.0,
+      "75%": 600.0,
+      "max": 3500.0
+    },
+    "protein_g": {
+      "count": 99949.0,
+      "mean": 21.4,
+      "std": 18.1,
+      "min": 0.0,
+      "25%": 5.0,
+      "50%": 20.0,
+      "75%": 30.0,
+      "max": 250.0
+    },
+    "fat_g": {
+      "count": 99949.0,
+      "mean": 17.6,
+      "std": 15.01,
+      "min": 0.0,
+      "25%": 10.0,
+      "50%": 15.0,
+      "75%": 25.0,
+      "max": 250.0
+    },
+    "carbohydrate_g": {
+      "count": 99949.0,
+      "mean": 40.56,
+      "std": 29.08,
+      "min": 0.0,
+      "25%": 20.0,
+      "50%": 35.0,
+      "75%": 60.0,
+      "max": 650.0
+    }
+  }
+}
