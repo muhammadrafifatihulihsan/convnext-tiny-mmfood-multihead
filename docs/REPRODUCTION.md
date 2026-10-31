@@ -1,5 +1,0 @@
-# Historical notebook bootstrap
-
-Obtain MM-Food-100K.csv from the upstream dataset after reviewing its terms. Place it in data/raw/ in a local copy of this GitHub folder. Package that directory as mmfood-multitask.zip, with mmfood-multitask/ as its top-level ZIP directory, because unchanged notebooks expect that internal path. Upload the ZIP to MyDrive/models-train/mmfood-multitask/mmfood-multitask.zip. Run notebooks 00?08 in Colab in order, with a GPU for training. Notebook 00 installs dependencies after mounting and extracting.
-
-The legacy internal directory name is required by existing code; the published repository name remains convnext-tiny-mmfood-multihead. Image download availability can change the sample. Artifact paths refer to the original Drive workflow. Do not run notebook 07 unless you intend to publish using your own account and have reviewed its target and private setting. It may regenerate a historical model card; the curated publication README is maintained separately.

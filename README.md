@@ -1,41 +1,105 @@
-# convnext-tiny-mmfood-multihead
+# ConvNeXt-Tiny - MMFood Multihead
 
-Image-based multi-task food classification and nutrition estimation using ConvNeXt-Tiny.
+An image-only food-understanding experiment: one ConvNeXt-Tiny backbone predicts food type, dish name, cooking method and four nutrition values. The repository follows the complete process from dataset exploration to saved predictions and Hugging Face export.
 
-[Model and downloadable files](https://huggingface.co/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead) ? [Source and notebooks](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead) ? [Bahasa Indonesia](README.id.md)
+[![Model](https://img.shields.io/badge/Hugging_Face-model-yellow)](https://huggingface.co/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead)
+[![PyTorch](https://img.shields.io/badge/PyTorch-multi--task-EE4C2C)](https://pytorch.org/)
+[![Notebooks](https://img.shields.io/badge/Notebooks-9_with_outputs-orange)](notebooks/)
 
-The source code, model weights, notebook outputs and historical metrics are preserved. See [experiment analysis](ANALYSIS.md), [usage terms](LICENSE.md), and [third-party notices](THIRD_PARTY_NOTICES.md). Personal non-commercial evaluation only; this is not an open-source license.
+[Bahasa Indonesia](README.id.md) | [Usage](docs/usage.md) | [Results](docs/results.md) | [Architecture](docs/project.md)
 
-> Evaluation caveat: exact cached-image duplicates cross dataset splits (477 repeated-content occurrences detected). Historical test metrics may be optimistic; see ANALYSIS.md. No retraining or deduplication was performed.
+## What's inside
 
-## Download and inference
+- **Shared image encoder, four heads:** 5 food contexts, 50 dish names, 11 cooking methods and 4 nutrition targets.
+- **Nine executed notebooks:** configuration, EDA, image download, splitting, training, evaluation, export, publishing and packaging. Original outputs remain visible.
+- **Experiment evidence:** training curves, confusion matrix, distribution plots, machine-readable metrics and a new exact-image overlap audit.
+- **Downloadable model:** safetensors and all loading files on Hugging Face, with a CPU-tested inference example.
+
+This is a personal non-commercial evaluation release, not a production nutrition service or an open-source license. See [use terms](LICENSE.md) and [upstream rights](THIRD_PARTY_NOTICES.md).
+
+## Download the model
+
+**[Open the model and files on Hugging Face](https://huggingface.co/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead)**
+
+The weights are approximately **112.3 MB**. Download the complete model snapshot for configuration, labels and custom code. GitHub contains the source, notebooks and reports; dataset CSVs, image caches and training checkpoints are excluded.
 
 ```python
 from huggingface_hub import snapshot_download
-folder = snapshot_download("muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead")
+snapshot_download(
+    repo_id="muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead",
+    local_dir="models/convnext-tiny-mmfood-multihead",
+)
 ```
 
-Install `requirements.txt` in an isolated Python environment. The listed lower bounds are original, not a verified compatibility matrix.
+Follow the [usage guide](docs/usage.md) for tested package versions, a complete image-to-prediction example, offline loading and output interpretation. No training run is needed to try the model.
 
-```python
-import torch
-from PIL import Image
-from torchvision import transforms as T
-from transformers import AutoModel
-model = AutoModel.from_pretrained(folder, trust_remote_code=True).eval()
-transform = T.Compose([T.Resize(255), T.CenterCrop(224), T.ToTensor(),
-    T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
-x = transform(Image.open("food.jpg").convert("RGB")).unsqueeze(0)
-with torch.no_grad():
-    print(model.predict(x, topk=3)[0])
+## Saved results
+
+| Task | Test result | Coverage |
+| --- | ---: | --- |
+| Food type | 77.92% accuracy | 3,600 images |
+| Dish name | 79.21% accuracy | 856 images with a top-50 label |
+| Cooking method | 65.50% accuracy | 3,600 images |
+| Calories | 95.68 kcal MAE | Baseline 190.06 kcal |
+| Protein | 6.28 g MAE | Baseline 14.08 g |
+| Fat | 5.23 g MAE | Baseline 10.56 g |
+| Carbohydrate | 13.26 g MAE | Baseline 23.47 g |
+
+![Recorded training curves](reports/figures/training_curves.png)
+
+**Read these as saved experiment results.** Exact-image auditing found **281 test images (7.81%) with training-set matches**, so test independence is not established and scores may be optimistic. Dish accuracy covers only the eligible vocabulary subset. Nutrition labels are estimates, not laboratory measurements. [Full results and audit](docs/results.md).
+
+## How it works
+
+```mermaid
+flowchart LR
+    A[Food image] --> B[224 px input]
+    B --> C[ConvNeXt-Tiny]
+    C --> D[Food type]
+    C --> E[Dish name]
+    C --> F[Cooking method]
+    C --> G[Nutrition regression]
 ```
 
-Review the custom model code before loading it; pin `revision` to the published commit for reproducibility. Outputs contain top-k food type, dish name, cooking method, and estimated nutrition (kcal and grams). This is an experimental model, not a medical or dietary decision tool.
+The experiment uses 35,998 downloaded images, split into 28,798 train / 3,600 validation / 3,600 test examples. Nutrition is trained in standardized log1p space; predict() returns kcal and grams. Top-k dish predictions always select from the known vocabulary, without an unknown-dish detector.
 
-## Repository contents
+![Food-type confusion matrix](reports/figures/confusion_food_type.png)
 
-GitHub contains code, notebooks, experiment configuration and reports. Hugging Face contains inference weights and model files plus reports. Dataset CSVs, image caches, training checkpoints and old ZIP archives are excluded.
+The exported image processor differs from the notebook evaluation transform. The documented inference example explicitly follows historical Resize(255), CenterCrop(224) and ImageNet normalization. See [architecture](docs/project.md), [data preparation](docs/data.md) and [preprocessing caveat](docs/results.md#preprocessing-discrepancy).
 
-## Training notebook setup
+## Explore the experiment
 
-Read docs/REPRODUCTION.md before executing notebooks 00?08 in Colab. Outputs are retained to show the original process; they do not establish reproducibility in a fresh environment. Existing docs under docs/ describe the historical workflow; this README and ANALYSIS.md clarify current publication limitations.
+```text
+00 Setup -> 01 EDA -> 02 Image cache -> 03 Splits and labels
+         -> 04 Training -> 05 Evaluation -> 06 Export
+         -> 07 Hub publication -> 08 Results packaging
+```
+
+Browse [the notebook sequence](docs/training.md) to inspect each saved stage. Code, weights and notebook output bytes are preserved; documentation and the audit explain what is actually supported by the experiment. Rerunning training is not necessary for inference and is outside the evaluation-only permission.
+
+## Repository map
+
+```text
+notebooks/          Nine executed notebooks
+src/                Original data, model and training implementation
+artifacts/          Saved experiment configuration and label statistics
+docs/               Usage, architecture, data, training and results
+reports/metrics/    Historical metrics plus publication overlap audit
+reports/figures/    EDA, training and evaluation plots
+licenses/           Upstream backbone license text
+```
+
+## Documentation
+
+| Read | For |
+| --- | --- |
+| [Usage](docs/usage.md) / [Indonesia](docs/usage.id.md) | Installation, model download and inference |
+| [Project](docs/project.md) | Four heads, loss, decoding and implementation map |
+| [Dataset](docs/data.md) | Cleaning, sampling, vocabularies and imbalance |
+| [Results](docs/results.md) | Metrics, learning curves, baseline and leakage |
+| [Training](docs/training.md) | Original hyperparameters and notebook dependencies |
+| [Troubleshooting](docs/troubleshooting.md) | Environment, authentication and loading problems |
+| [Publication](docs/publishing.md) | Owner maintenance and artifact integrity |
+| [Attribution](docs/attribution.md) | Dataset, backbone, libraries and citation |
+
+[Validation record](VALIDATION.md) distinguishes local inference checks from the six-epoch training run, which was not repeated. [SHA256SUMS.txt](SHA256SUMS.txt) records package contents. Author: [muhammadrafifatihulihsan](https://github.com/muhammadrafifatihulihsan).

@@ -1,3 +1,7 @@
-* text=auto
+*.md text eol=lf
+*.txt text eol=lf
+*.py -text
+*.ipynb -text
+*.json -text
 *.png binary
 *.safetensors filter=lfs diff=lfs merge=lfs -text

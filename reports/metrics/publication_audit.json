@@ -1,0 +1,32 @@
+{
+  "method": "SHA-256 of cached JPEG bytes; exact matches only",
+  "files_checked": 35998,
+  "unique_hashes": 33889,
+  "cross_split_hash_groups": 431,
+  "images_in_cross_split_groups": 1715,
+  "test_images_matching_train": 281,
+  "val_images_matching_train": 263,
+  "food_type_counts_by_split": {
+    "train": {
+      "Packaged food": 2395,
+      "Homemade food": 13413,
+      "Restaurant food": 10217,
+      "Raw vegetables and fruits": 2696,
+      "Others": 77
+    },
+    "val": {
+      "Packaged food": 300,
+      "Homemade food": 1676,
+      "Restaurant food": 1277,
+      "Raw vegetables and fruits": 337,
+      "Others": 10
+    },
+    "test": {
+      "Homemade food": 1677,
+      "Raw vegetables and fruits": 337,
+      "Restaurant food": 1277,
+      "Packaged food": 299,
+      "Others": 10
+    }
+  }
+}

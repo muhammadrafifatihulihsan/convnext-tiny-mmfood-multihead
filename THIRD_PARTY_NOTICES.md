@@ -1,7 +1,13 @@
-# Third-party materials
+# Third-party notices
 
-The model was trained using Codatta/MM-Food-100K, now redirected to https://huggingface.co/datasets/Humanbased-AI/MM-Food-100K . Its dataset card states OpenRAIL-M and non-commercial use; commercial use requires a separate permission from the dataset owner. No dataset or image cache is redistributed here. Evaluation report figures may include dataset example images and remain subject to source rights.
+## Dataset
 
-Backbone: https://huggingface.co/facebook/convnext-tiny-224 (Apache-2.0). Original upstream rights are not replaced by the author's evaluation-only terms. See the upstream repository for its license and notices.
+Source: [MM-Food-100K](https://huggingface.co/datasets/Humanbased-AI/MM-Food-100K), originally Codatta/MM-Food-100K. The upstream card states OpenRAIL-M and non-commercial use, with separate permission required for commercial use. Dataset permissions remain with the owner; this project does not claim ownership of the images or annotations. CSVs and image caches are not redistributed. Report figures containing sample imagery remain subject to source rights.
 
-Dataset report: https://huggingface.co/papers/2508.10429 .
+## Backbone
+
+[facebook/convnext-tiny-224](https://huggingface.co/facebook/convnext-tiny-224) is published under Apache-2.0. The upstream [license text](licenses/ConvNeXt-LICENSE) is included. The author's evaluation-only terms do not remove rights granted by upstream owners. No endorsement by Meta or the dataset publisher is implied.
+
+## Original contributions and citation
+
+The [project terms](LICENSE.md) apply to original author-owned contributions. Third-party code, datasets, dependencies and platform-required rights remain governed by their respective terms. See [attribution](docs/attribution.md) for research and software sources. Cite exact model/source revisions when describing this experiment.
