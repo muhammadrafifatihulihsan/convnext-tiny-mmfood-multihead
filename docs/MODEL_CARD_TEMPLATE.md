@@ -4,7 +4,8 @@ license_name: mmfood-personal-evaluation-only
 license_link: LICENSE.md
 library_name: transformers
 base_model: {{BACKBONE}}
-tags: [food, multi-task, image-classification, nutrition-estimation, custom_code]
+pipeline_tag: image-classification
+tags: [convnext, food-recognition, multi-task, nutrition-estimation, custom_code]
 ---
 # {{REPO_ID}}
 

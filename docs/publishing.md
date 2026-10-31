@@ -21,3 +21,9 @@ Local packages are publish/github/convnext-tiny-mmfood-multihead and publish/hug
 Use local hf auth login. If a stale token is retained, use hf auth login --force, then hf auth whoami. Do not paste tokens into notebook cells, documentation, command arguments or remote URLs. Do not use another cached account to update the author's repo.
 
 The original notebook's generated model card is a draft requiring review, not a replacement for curated analysis. SHA256SUMS.txt lists package files excluding itself and Git internals. Checksums establish byte integrity, not scientific validity. Line-ending rules preserve code/notebook bytes to keep comparisons meaningful.
+
+## Hugging Face discovery metadata
+
+The primary task remains image-classification, with custom multi-head inference documented explicitly. Manual tags are convnext, food-recognition, multi-task, nutrition-estimation and custom_code. Language tags are omitted: bilingual documentation is not evidence of a text-language modeling capability. Dataset, backbone, library and custom license metadata are kept in their dedicated fields.
+
+Hub-generated tags (for example safetensors, model type, feature-extraction inferred from AutoModel, base-model relations, cited papers or region) may remain visible. They are not duplicate manual tags and are not removed by changing model-card keywords. The primary task and usage guide describe the actual intended interface; code/config are not altered just to change an inferred badge. See the [official model-card metadata guide](https://huggingface.co/docs/hub/model-cards).

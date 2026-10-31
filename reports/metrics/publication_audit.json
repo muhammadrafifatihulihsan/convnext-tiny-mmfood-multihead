@@ -28,5 +28,25 @@
       "Packaged food": 299,
       "Others": 10
     }
+  },
+  "train_majority_class_baselines": {
+    "y_food": {
+      "most_frequent_training_label_id": 0,
+      "eligible_test_examples": 3600,
+      "correct_test_examples": 1677,
+      "accuracy": 0.4658333333333333
+    },
+    "y_dish": {
+      "most_frequent_training_label_id": 31,
+      "eligible_test_examples": 856,
+      "correct_test_examples": 86,
+      "accuracy": 0.10046728971962617
+    },
+    "y_cook": {
+      "most_frequent_training_label_id": 9,
+      "eligible_test_examples": 3600,
+      "correct_test_examples": 658,
+      "accuracy": 0.1827777777777778
+    }
   }
 }

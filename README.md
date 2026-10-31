@@ -33,6 +33,14 @@ snapshot_download(
 
 Follow the [usage guide](docs/usage.md) for tested package versions, a complete image-to-prediction example, offline loading and output interpretation. No training run is needed to try the model.
 
+## Why the results are limited
+
+The recorded model beats train-majority constant predictions (46.58% food type, 10.05% dish on eligible images, 18.28% cooking), so it has learned useful signals on this split. However, that is not sufficient evidence for reliable real-world use. Food context and cooking method may be visually ambiguous, dish coverage is restricted, minority classes have little data, and nutrition depends on portions/ingredients not measured by the input photograph.
+
+These are plausible mechanisms supported by the setup, not experimentally isolated causes. Cropping and competition between tasks also need controlled tests. Six epochs or a small backbone cannot be blamed without comparisons. Exact-image leakage may inflate scores rather than explain low ones; processor mismatch affects comparisons across inference paths, not the already-recorded notebook evaluation.
+
+MAE 95.68 kcal is an average absolute error against annotations, not a maximum error or a percentage accuracy. See [detailed interpretation and improvement priorities](docs/results.md#are-these-results-poor) and [penjelasan bahasa Indonesia](docs/results.id.md). Code and weights are unchanged; no new training or corrected benchmark is claimed.
+
 ## Saved results
 
 | Task | Test result | Coverage |

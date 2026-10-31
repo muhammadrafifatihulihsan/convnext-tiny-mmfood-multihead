@@ -44,6 +44,12 @@ Ikuti [panduan penggunaan](docs/usage.id.md) untuk membuat environment dan menja
 
 **Hasil ini bukan benchmark bebas kebocoran.** Audit menemukan 281 gambar test (7,81%) identik dengan train, sehingga metrik dapat terlalu optimistis. Akurasi hidangan hanya berlaku pada subset yang memiliki label top-50. Baseline nutrisi adalah rata-rata di ruang log1p yang dikembalikan ke satuan asli, bukan rata-rata aritmetika biasa. [Baca analisis lengkap](docs/results.md).
 
+## Mengapa hasilnya masih terbatas?
+
+Model mengungguli tebakan kelas mayoritas (food type 46,58%, dish 10,05%, cooking 18,28%), tetapi belum cukup untuk dianggap andal pada foto baru. Konteks asal makanan dan metode memasak tidak selalu terlihat; kosakata hidangan terbatas; kelas kecil sangat sedikit; porsi dan bahan tersembunyi tidak bisa diukur hanya dari foto. Crop gambar dan pembagian fitur antar-tugas juga perlu diuji, belum terbukti sebagai penyebab utama.
+
+Duplikasi train?test justru bisa membuat skor terlalu optimistis, bukan menjelaskan skor rendah. Enam epoch atau backbone kecil juga tidak boleh langsung disalahkan tanpa eksperimen pembanding. [Baca penjelasan lengkap dalam bahasa Indonesia](docs/results.id.md), termasuk hal yang terbukti, dugaan mekanismenya, dan prioritas investigasi.
+
 ## Alur dan batas model
 
 100.000 baris metadata dibersihkan menjadi 99.949 baris. Sebanyak 36.000 URL dicoba dan 35.998 gambar berhasil masuk eksperimen. Split berisi 28.798 train, 3.600 validation dan 3.600 test, dengan enam epoch tercatat.

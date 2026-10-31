@@ -7,7 +7,7 @@
 | [Usage](usage.md) / [Indonesia](usage.id.md) | Installation, download and image inference |
 | [Project](project.md) | Architecture, outputs and module responsibilities |
 | [Data](data.md) | Cleaning, labels, image sampling and splitting |
-| [Results](results.md) | Metrics, figures, baseline and exact-image leakage |
+| [Results](results.md) / [Indonesia](results.id.md) | Metrics, figures, baseline and exact-image leakage |
 | [Training](training.md) | Nine notebooks and recorded hyperparameters |
 | [Troubleshooting](troubleshooting.md) | Environment, loading, paths and authentication |
 | [Publishing](publishing.md) | Owner release workflow and package boundaries |
