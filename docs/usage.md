@@ -75,3 +75,7 @@ This uses the original evaluation transform. The exported processor differs; see
 `predict()` returns one dictionary per image. Use a positive topk, normally 1?3; each head caps it at its class count. Low-level forward outputs are food_type_logits, dish_logits, cooking_logits and nutrition_pred. The last is standardized log-space output, not grams or kcal. Use predict() for inverse transformation.
 
 Scores are not calibrated certainty and unknown dishes are not rejected. Nutrition is an estimate from image annotations, not measured dietary intake. CUDA users must move both model and pixels to the same device. No latency or memory benchmark is claimed.
+
+## Existing Hub archive
+
+The Hub also retains a historical raw/ checkpoint from the original upload (about 112.4 MB). It is not required for the documented safetensors inference path. A full repository snapshot includes this legacy archive; use `ignore_patterns=["raw/**"]` with snapshot_download to omit it. The curated local publication folder does not duplicate this older archive.
