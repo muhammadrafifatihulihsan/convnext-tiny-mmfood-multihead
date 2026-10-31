@@ -32,7 +32,7 @@ The `Others` food type has only 77 train and 10 test examples, versus 13,413 tra
 
 Nutrition targets are log1p-transformed and standardized with train-only statistics. Values describe source annotations for photographed food, not explicitly per 100 g. Ingredients and portion labels are unused. Right-skewed and rounded labels limit what the regressor can learn about real nutrition.
 
-Train transforms: random resized crop to 224 (scale 0.6?1.0), horizontal flip, color jitter, tensor conversion and ImageNet normalization. Evaluation: bilinear resize short side to 255, center crop 224 and the same normalization.
+Train transforms: random resized crop to 224 (scale 0.6-1.0), horizontal flip, color jitter, tensor conversion and ImageNet normalization. Evaluation: bilinear resize short side to 255, center crop 224 and the same normalization.
 
 ## Split independence
 

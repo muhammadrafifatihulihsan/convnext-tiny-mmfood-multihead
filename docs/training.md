@@ -8,15 +8,15 @@ This describes the author's experiment for inspection and provenance. It does no
 
 | Notebook | Stage | Main artifact |
 | --- | --- | --- |
-| [00](../notebooks/00_setup_config.ipynb) | Mount Drive, inspect runtime, save config | artifacts/config.json |
-| [01](../notebooks/01_eda_cleaning.ipynb) | EDA, clean labels and plot distributions | clean.csv and EDA reports |
-| [02](../notebooks/02_download_images.ipynb) | Stratified URL sample and image download | manifest.csv, images.tar |
-| [03](../notebooks/03_split_labels.ipynb) | Split, map labels, standardize nutrition | train/val/test.csv, labels.json |
-| [04](../notebooks/04_train_model.ipynb) | Optimize and validate | best.pt, last.pt, history.json |
-| [05](../notebooks/05_evaluate.ipynb) | Test metrics and baseline | test_metrics.json and figures |
-| [06](../notebooks/06_save_export_model.ipynb) | Raw and Transformers export | hf_export and raw model |
-| [07](../notebooks/07_push_to_huggingface.ipynb) | Historical Hub upload | Model repo and tag |
-| [08](../notebooks/08_package_results.ipynb) | Historical result packaging | Results ZIP |
+| [00](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/00_setup_config.ipynb) | Mount Drive, inspect runtime, save config | artifacts/config.json |
+| [01](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/01_eda_cleaning.ipynb) | EDA, clean labels and plot distributions | clean.csv and EDA reports |
+| [02](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/02_download_images.ipynb) | Stratified URL sample and image download | manifest.csv, images.tar |
+| [03](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/03_split_labels.ipynb) | Split, map labels, standardize nutrition | train/val/test.csv, labels.json |
+| [04](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/04_train_model.ipynb) | Optimize and validate | best.pt, last.pt, history.json |
+| [05](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/05_evaluate.ipynb) | Test metrics and baseline | test_metrics.json and figures |
+| [06](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/06_save_export_model.ipynb) | Raw and Transformers export | hf_export and raw model |
+| [07](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/07_push_to_huggingface.ipynb) | Historical Hub upload | Model repo and tag |
+| [08](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/notebooks/08_package_results.ipynb) | Historical result packaging | Results ZIP |
 
 ## Recorded settings
 
@@ -34,7 +34,7 @@ This describes the author's experiment for inspection and provenance. It does no
 | Loader / download workers | 2 / 32 |
 | Best checkpoint | Lowest validation loss |
 
-Training drops the incomplete final batch. Random crops (scale 0.6?1.0), horizontal flips and color jitter augment training images. Evaluation uses deterministic resizing/cropping. Dropout is 0.2.
+Training drops the incomplete final batch. Random crops (scale 0.6-1.0), horizontal flips and color jitter augment training images. Evaluation uses deterministic resizing/cropping. Dropout is 0.2.
 
 ## Original Colab bootstrap
 

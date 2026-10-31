@@ -27,3 +27,11 @@ The original notebook's generated model card is a draft requiring review, not a 
 The primary task remains image-classification, with custom multi-head inference documented explicitly. Manual tags are convnext, food-recognition, multi-task, nutrition-estimation and custom_code. Language tags are omitted: bilingual documentation is not evidence of a text-language modeling capability. Dataset, backbone, library and custom license metadata are kept in their dedicated fields.
 
 Hub-generated tags (for example safetensors, model type, feature-extraction inferred from AutoModel, base-model relations, cited papers or region) may remain visible. They are not duplicate manual tags and are not removed by changing model-card keywords. The primary task and usage guide describe the actual intended interface; code/config are not altered just to change an inferred badge. See the [official model-card metadata guide](https://huggingface.co/docs/hub/model-cards).
+
+## Bilingual and cross-platform consistency
+
+README.md/README.id.md, docs/usage.md/docs/usage.id.md, and docs/results.md/docs/results.id.md are complete paired guides, not summaries of each other. Stable section IDs, figures, tables, code examples and quantitative values must stay aligned. Both languages use the same numeric notation so values can be checked without locale ambiguity. Other technical guides are currently English.
+
+Shared Markdown bodies are identical in the GitHub and HF packages. Only the HF English README adds Hub YAML metadata; GitHub-only source/template/checking files need not exist in HF. Notebook links point to GitHub from both hosts. Download examples skip the historical raw archive by default and explain how to include it.
+
+From the GitHub checkout run `python scripts/check_publication_docs.py`. To compare both staging packages, add `--peer ../../huggingface/convnext-tiny-mmfood-multihead`. The [checker source](https://github.com/muhammadrafifatihulihsan/convnext-tiny-mmfood-multihead/blob/main/scripts/check_publication_docs.py) validates section alignment, numeric parity, example and figure parity, table structure, local links and anchors, recorded metrics and checksum manifests. Meaning and translation quality still require a paragraph-level review. Refresh manifests before running checks after intentional edits.
